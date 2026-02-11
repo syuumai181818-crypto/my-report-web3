@@ -1,1 +1,25 @@
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>自己紹介ページ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My First Web Page</h1>
+    <p>大学の課題で作成したページです。</p>
+    <button id="btn">クリックしてみて！</button>
+    <script src="script.js"></script>
+</body>
+  body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+h1 { color: #2c3e50; }
+document.getElementById('btn').addEventListener('click', () => {
+    alert('こんにちは！課題提出完了まであと少しです！');
+});
+</script>
+</body>  
+</html>
