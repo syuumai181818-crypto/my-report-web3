@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MyBrand</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="hero-content fade-in">
+            <h1>Welcome to My Page</h1>
+            <p>HTML / CSS / JavaScript を駆使した課題制作サイトです。</p>
+        </div>
+    </section>
+
+    <section id="hobbies">
+        <h2 class="fade-in">Interests</h2>
+        <div class="grid-container">
+            <div class="card fade-in">
+                <h3>Motorcycles</h3>
+                <p>風を感じる走りが好きです。</p>
+            </div>
+            <div class="card fade-in">
+                <h3>Track & Field</h3>
+                <p>走るのも観るのも情熱を注いでいます。</p>
+            </div>
+            <div class="card fade-in">
+                <h3>Gaming</h3>
+                <p>格闘ゲームでの真剣勝負が趣味です。</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+/* 基本設定 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #f4f7f6; }
+
+/* ヘッダー */
+header { background: #2c3e50; color: white; padding: 1rem 0; position: fixed; width: 100%; z-index: 100; }
+nav { display: flex; justify-content: space-around; align-items: center; }
+nav ul { display: flex; list-style: none; }
+nav ul li { margin-left: 20px; }
+nav ul li a { color: white; text-decoration: none; font-weight: bold; }
+
+/* ヒーローセクション */
+#hero {
+    height: 100vh;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; }
+
+/* グリッドレイアウト */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.card:hover { transform: translateY(-10px); }
+
+/* アニメーション用 */
+.fade-in { opacity: 0; transform: translateY(20px); transition: 1s; }
+.fade-in.show { opacity: 1; transform: translateY(0); }
+
+// スクロールに合わせて要素を表示させる
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
